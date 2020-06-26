@@ -1,0 +1,37 @@
+package util;
+
+import java.io.IOException;
+import java.util.Properties;
+
+/*
+ * Class that extracts properties from the prop file.
+ * 
+ * @author Sebastiano Armeli-Battana
+ */
+public class PropertyLoader {
+
+	private static final String PROP_FILE = "/application.properties";
+	private static Properties props = new Properties();
+        private PropertyLoader() {
+		}
+
+	public static void loadProperty() {
+
+		try {
+			props.load(PropertyLoader.class.getResourceAsStream(PROP_FILE));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+	public static String getProperty(String name) {
+		String value = "";
+
+		if (name != null) {
+			value = props.getProperty(name);
+		}
+		return value;
+	}
+}
