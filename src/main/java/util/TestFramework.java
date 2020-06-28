@@ -4,10 +4,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 import webdriver.BrowserFactory;
 
 import java.io.File;
@@ -31,7 +28,7 @@ public class TestFramework {
     }
 
 
-    @BeforeClass
+    @BeforeMethod
     public void beforeClass() {
         String browser = PropertyLoader.getProperty(Constant.BROWSER);
         driver = BrowserFactory.getBrowser(browser);
@@ -44,7 +41,7 @@ public class TestFramework {
     @DataProvider(name = "data")
     public Object[][] dataSupplier() throws Exception {
 
-        String fileLoc = PropertyLoader.getProperty(Constant.PROJECT_LOC) + Constant.Path_TestData + Constant.File_TestData;
+        String fileLoc = System.getProperty("user.dir")+ Constant.Path_TestData + Constant.File_TestData;
         File file = new File(fileLoc);
         FileInputStream fis = new FileInputStream(file);
 
@@ -60,7 +57,7 @@ public class TestFramework {
             for (int j = 0; j < lastCellNum; j++) {
 
                 String key = sheet.getRow(0).getCell(j).toString();
-                if (key.equals(Constant.STATUS) || key.equals(Constant.ACTUAL_OUTPUT)) {
+                if (key.equals(Constant.STATUS) || key.equals(Constant.ACTUAL_OUTPUT) || key.equals(Constant.UPDATED_ON)) {
                     ExcelUtils.setCellData("", i + 1, j);
                 } else {
                     String value = sheet.getRow(i + 1).getCell(j).toString();
@@ -68,7 +65,7 @@ public class TestFramework {
                 }
             }
             datamap.put("row", i + 1);
-            datamap.put("col", lastCellNum - 2);
+            datamap.put("col", lastCellNum - 3);
 
             obj[i][0] = datamap;
 

@@ -11,6 +11,8 @@ public class Constant {
 
     public static final String ACTUAL_OUTPUT = "ActualOutput";
 
+    public static final String UPDATED_ON = "UpdatedOn";
+
     public static final String STATUS = "Status";
 
     public static final String ROW = "row";
@@ -18,8 +20,6 @@ public class Constant {
     public static final String COL = "col";
 
     public static final String URL = "url";
-
-    public static final String PROJECT_LOC = "project_loc";
 
     public static final String BROWSER = "browser";
 
@@ -29,7 +29,7 @@ public class Constant {
 
     public static final String BROWSER_IE = "ie";
 
-    public static final String Path_TestData = "/dateparser/src/test/resources/testdata/";
+    public static final String Path_TestData = "/src/test/resources/testdata/";
 
     public static final String File_TestData = "testdata.xlsx";
 

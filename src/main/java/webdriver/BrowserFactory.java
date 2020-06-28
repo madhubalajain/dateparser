@@ -19,7 +19,7 @@ public class BrowserFactory {
      */
     public static WebDriver getBrowser(String browserName) {
         WebDriver driver = null;
-        String projectLoc = PropertyLoader.getProperty(Constant.PROJECT_LOC);
+        String projectLoc = System.getProperty("user.dir");
 
         if (browserName.equalsIgnoreCase(Constant.BROWSER_FIREFOX)) {
             driver = drivers.get(Constant.BROWSER_FIREFOX);
@@ -31,7 +31,7 @@ public class BrowserFactory {
             driver = drivers.get(Constant.BROWSER_IE);
             if (driver == null) {
                 System.setProperty("webdriver.ie.driver",
-                        projectLoc + "/dateparser/src/main/resources/drivers/ie/iedriver");
+                        projectLoc + "/src/main/resources/drivers/ie/iedriver");
                 driver = new InternetExplorerDriver();
                 drivers.put(Constant.BROWSER_IE, driver);
             }
@@ -39,7 +39,7 @@ public class BrowserFactory {
             driver = drivers.get(Constant.BROWSER_CHROME);
             if (driver == null) {
                 System.setProperty("webdriver.chrome.driver",
-                        projectLoc + "/dateparser/src/main/resources/drivers/chrome/chromedriver");
+                        projectLoc + "/src/main/resources/drivers/chrome/chromedriver");
                 driver = new ChromeDriver();
                 drivers.put(Constant.BROWSER_CHROME, driver);
             }

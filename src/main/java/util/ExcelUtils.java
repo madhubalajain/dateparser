@@ -68,7 +68,7 @@ public class ExcelUtils {
 
         try {
 
-            String fileLoc = PropertyLoader.getProperty(Constant.PROJECT_LOC) + Constant.Path_TestData + Constant.File_TestData;
+            String fileLoc = System.getProperty("user.dir")+ Constant.Path_TestData + Constant.File_TestData;
 
             FileInputStream ExcelFile = new FileInputStream(fileLoc);
 
@@ -115,6 +115,7 @@ public class ExcelUtils {
     public static void updateResults(String status, String actualOutput, DateEntity testData) throws Exception {
         ExcelUtils.setCellData(status, testData.getRow(), testData.getCol());
         ExcelUtils.setCellData(actualOutput, testData.getRow(), testData.getCol() + 1);
+        ExcelUtils.setCellData((new java.util.Date()).toString(),testData.getRow(), testData.getCol() + 2);
     }
 
 }

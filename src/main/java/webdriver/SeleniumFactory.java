@@ -8,7 +8,7 @@ public class SeleniumFactory {
     public static void click(WebElement element, String msg) throws Exception {
         try {
             element.click();
-            Thread.sleep(1000);
+            Thread.sleep(5000);
             Log.info(msg);
         } catch (Exception e) {
             Log.error("Exception - " +msg);

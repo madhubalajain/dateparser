@@ -33,7 +33,7 @@ public class DateParser extends TestFramework {
         expectedOutput = testData.getExpectedOutput();
         Assert.assertEquals(actualOutput, expectedOutput, "Pass");
         ExcelUtils.updateResults(Constant.PASS,actualOutput,testData);
-        Log.info("PASSED - Date formatting successul");
+        Log.info("PASSED - Date formatting successful");
         Log.endTestCase(testData.getTestcaseName());
 
         }catch (AssertionError e) {
